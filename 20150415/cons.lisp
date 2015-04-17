@@ -1,0 +1,5 @@
+(cons 'chiken 'nil)
+(cons 'chiken (cons 'nil 'pork))
+(cons 'chiken ())
+(cons 'chiken '(pork beff))
+(cons 'chiken (cons 'pork (cons 'beaf ())))

@@ -1,0 +1,6 @@
+(defvar *number-was-odd* nil)
+(if (oddp 5)
+  (progn (setf *number-was-odd* T)
+	 (print "odd number"))
+  (print "even number"))
+(print *number-was-odd*)
