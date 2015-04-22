@@ -1,2 +1,0 @@
-(print (and (oddp 5) (oddp 7) (oddp 9)))
-(print (or (oddp 4) (oddp 7) (oddp 8)))

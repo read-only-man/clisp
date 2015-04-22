@@ -1,8 +1,0 @@
-(print (and (oddp 5) (oddp 7) (oddp 9)))
-(print (or (oddp 4) (oddp 7) (oddp 8)))
-(defparameter *is-it-even* nil)
-(print (or (oddp 4) (setf *is-it-even* t)))
-(print *is-it-even*)
-(setf *is-it-even* nil)
-(print (or (oddp 5) (setf *is-it-even* t)))
-(print *is-it-even*)
