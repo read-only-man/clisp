@@ -1,6 +1,0 @@
-(print 'ƒVƒ“ƒ{ƒ‹‚Ì”äŠr‚Å‚Íeq‚ğg‚¤‚±‚Æ)
-(defparameter *fruit* 'apple)
-(cond ((eq *fruit* 'apple)
-       (print 'its-an-apple))
-      ((eq *fruit* 'orange)
-       (print 'its-an-orange)))
