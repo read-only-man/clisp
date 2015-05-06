@@ -1,0 +1,13 @@
+(defparameter *house* '((walls (mortar (cement)
+				       (water)
+				       (sand))
+			       (bricks))
+			(windows (glass)
+				 (frame)
+				 (curtains))
+			(roof (singles)
+			      (chimney))))
+(print (assoc 'walls *house*))
+(print (assoc 'windows *house*))
+(print (assoc 'roof *house*))
+
