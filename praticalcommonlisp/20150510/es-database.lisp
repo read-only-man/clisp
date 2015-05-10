@@ -65,6 +65,7 @@
 
 (load-db "records.db")
 
+#|
 (defun where (&key title artist rating (ripped nil ripped-p))
   #'(lambda (cd)
       (and
@@ -72,6 +73,7 @@
 	(if artist (equal (getf cd :artist) artist) t)
 	(if rating (equal (getf cd :rating) rating) t)
 	(if ripped-p (equal (getf cd :ripped) ripped) t))))
+|#
 
 (defun update (selector-fn &key title artist rating (ripped nil ripped-p))
   (setf *db*
@@ -88,4 +90,13 @@
 (defun delete-row (selector-fn)
   (setf *db* (remove-if selector-fn *db*)))
 
+(defun make-comparison-expr (field value)
+  `(equal (getf cd ,field) ,value))
+
+(defun make-comparisons-list (fields)
+  (loop while fields
+	collect (make-comparison-expr (pop fields) (pop fields))))
+
+(defmacro where (&rest clauses)
+  `#' (lambda (cd) (and ,@(make-comparisons-list clauses))))
 
