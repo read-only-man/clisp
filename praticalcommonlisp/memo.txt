@@ -1,0 +1,47 @@
+&optional	オプショナルパラメータ
+&rest		可変引数
+&key		キーワード引数
+(defun foo (a &optional (b 10)) (list a b))
+(defun foo (a b &optional (c 3 &c-supplied-p)))	←引数が与えられたものかどうかは 「パラメータ名-supplied-p」で参照する
+(defun foo (&rest args) ...)	←リストにまとめる
+(defun foo (&key a b c) (list a b c))
+	→(foo :b 1)	(NIL 1 NIL)
+(defun foo (&key (a 0) (b 0 b-supplied-p)))
+
+(quote a)	→	'a
+評価しないでおく
+(function foo)	→	#'foo
+関数参照
+
+(foo 1 2 3) ≡ (funcall #'foo 1 2 3)
+funcall　個別のパラメータのときに使う
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+    (loop repeat (funcall fn i) do (format t "*"))
+    (format t "~%")))
+(plot #'exp 0 4 1/2)
+
+(defvar plot-data (list #'exp 0 4 1/2))
+
+(plot (first plot-data)(second plot-data)(third plot-data)(fourth plot-data))
+→
+(apply #'plot plot-data)
+
+(defvar plot-data (list 0 4 1/2))
+→
+(apply #'plot #'exp plot-data)
+apply リストパラメータのときに使う。最後がリストであれば途中から適用することもできる。
+
+(incf x)　≡　(setf x (+1 x))
+(decf x)　≡　(setf x (-1 x))
+(incf x 10)　≡　(setf x (+ x 10))
+
+(rotatef a b)	AとBを入れ替える nilを返す
+	≡ (let ((tmp a)) (setf a b b tmp) nil)
+
+(setf x 1 y 2)　≡ (setf x 1) (setf y 2)
+
+(shift a b 10)　左にずらす（AがBになり、Bが10になる）　Aだった値を返す
+	≡　(let ((tmp a)) (setf a b)(setf b 10) tmp)
+
+
