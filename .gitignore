@@ -46,3 +46,5 @@ Temporary Items
 *.un~
 20150425/adventure.lisp~
 *.lisp~
+landoflisp/20150429/line-sep.fas
+*.lib
